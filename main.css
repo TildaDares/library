@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.circle {
+    border-radius: 50%;
+    height: 60px;
+    position: fixed;
+    bottom: 12px;
+    width: 60px;
+}
+
+.books-child {
+    max-width: 342px;
+}
+
+.books-child p,
+.form-check-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.books-child p span {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.fa-plus {
+    font-size: 1.6rem;
+}
