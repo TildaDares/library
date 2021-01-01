@@ -3,11 +3,13 @@ let library = JSON.parse(localStorage.getItem("myLibrary") || "[]");
 let form = document.getElementsByTagName('fieldset');
 let submit = document.querySelector('.submit').addEventListener('click', addBookToLibrary);
 
-function Book(title, author, numOfPages, isRead) {
-    this.title = title
-    this.author = author
-    this.numOfPages = numOfPages
-    this.isRead = isRead
+class Book {
+    constructor(title, author, numOfPages, isRead) {
+        this.title = title
+        this.author = author
+        this.numOfPages = numOfPages
+        this.isRead = isRead
+    }
 }
 
 function createChildDiv() {
