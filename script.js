@@ -19,39 +19,42 @@ function createChildDiv() {
     return childDiv;
 }
 
+function renderBook(bookObj) {
+  let childDiv = createChildDiv();
+	let readBtn = document.createElement("button");
+	let delBtnDiv = document.createElement("div");
+	let readBtnDiv = document.createElement("div");
+	readBtn.className = "btn read";
+	delBtnDiv.className = "float-right mt-2";
+	readBtnDiv.className = "float-left mt-2";
+	let deleteBtn = document.createElement("button");
+	deleteBtn.className = "btn btn-danger remove float-right";
+	deleteBtn.textContent = "Remove";
+	childDiv.id = i;
+	bookObj = library[i];
+	for (let key in library[i]) {
+		if (key === "isRead") {
+			hasRead(bookObj[key], readBtn);
+			continue;
+		}
+		let par = document.createElement("p");
+		let span = document.createElement("span");
+		par.textContent = `${titleCase(key)}: `;
+		span.textContent = bookObj[key];
+		childDiv.appendChild(par);
+		par.appendChild(span);
+	}
+	delBtnDiv.appendChild(deleteBtn);
+	readBtnDiv.appendChild(readBtn);
+	childDiv.appendChild(readBtnDiv);
+	childDiv.appendChild(delBtnDiv);
+	deleteBtn.addEventListener("click", deleteBtnFunc(bookObj));
+	readBtn.addEventListener("click", readBtnFunc(bookObj));
+}
 
 function displayBooks() {
     for (let i = 0; i < library.length; i++) {
-        let childDiv = createChildDiv();
-        let readBtn = document.createElement('button');
-        let delBtnDiv = document.createElement('div');
-        let readBtnDiv = document.createElement('div');
-        readBtn.className = 'btn read';
-        delBtnDiv.className = 'float-right mt-2';
-        readBtnDiv.className = 'float-left mt-2';
-        let deleteBtn = document.createElement('button');
-        deleteBtn.className = 'btn btn-danger remove float-right';
-        deleteBtn.textContent = 'Remove';
-        childDiv.id = i;
-        bookObj = library[i];
-        for (let key in library[i]) {
-            if (key === 'isRead') {
-                hasRead(bookObj[key], readBtn);
-                continue;
-            }
-            let par = document.createElement('p');
-            let span = document.createElement('span');
-            par.textContent = `${titleCase(key)}: `;
-            span.textContent = bookObj[key];
-            childDiv.appendChild(par);
-            par.appendChild(span);
-        }
-        delBtnDiv.appendChild(deleteBtn);
-        readBtnDiv.appendChild(readBtn);
-        childDiv.appendChild(readBtnDiv);
-        childDiv.appendChild(delBtnDiv);
-        deleteBtn.addEventListener('click', deleteBtnFunc(bookObj));
-        readBtn.addEventListener('click', readBtnFunc(bookObj));
+        
     }
 }
 
