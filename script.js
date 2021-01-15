@@ -59,7 +59,7 @@ function displayAllBooks() {
 	}
 }
 
-let readBtnFunc = function (bookObj) {
+const readBtnFunc = function readBtn(bookObj) {
 	return function (e) {
 		if (bookObj["isRead"]) {
 			e.target.textContent = "not read";
@@ -87,7 +87,7 @@ function hasRead(bool, readBtn) {
 	}
 }
 
-let deleteBtnFunc = function (bookObj) {
+const deleteBtnFunc = function deleteBtn(bookObj) {
 	return function (e) {
 		if (!confirm("Are you sure you want to delete this book?")) {
 			return;
@@ -95,15 +95,17 @@ let deleteBtnFunc = function (bookObj) {
 
 		library.splice(library.indexOf(bookObj), 1);
 		localStorage.setItem("myLibrary", JSON.stringify(library));
-		location.reload();
+		document.querySelector(".book").removeChild(e.target.parentNode.parentNode);
 	};
 };
 
 function addBookToLibrary(e) {
+	e.preventDefault();
 	let title = document.querySelector("#title").value;
 	let author = document.querySelector("#author").value;
 	let pages = document.querySelector("#numOfPages").value;
 	let isChecked = document.querySelector(".modal-checkbox").checked;
+	$("#staticBackdrop").modal("hide");
 	book = new Book(title, author, pages, isChecked);
 	library.push(book);
 	localStorage.setItem("myLibrary", JSON.stringify(library));
@@ -123,4 +125,4 @@ function titleCase(bookLibKey) {
 			break;
 	}
 }
-displayBooks();
+displayAllBooks();
