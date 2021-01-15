@@ -1,7 +1,7 @@
 const bookDiv = document.querySelector('.book');
 let library = JSON.parse(localStorage.getItem("myLibrary") || "[]");
-let form = document.getElementsByTagName('fieldset');
-let submit = document.querySelector('.submit').addEventListener('click', addBookToLibrary);
+const form = document.getElementsByTagName('form')[0];
+form.addEventListener('submit', addBookToLibrary);
 
 class Book {
     constructor(title, author, numOfPages, isRead) {
@@ -18,6 +18,7 @@ function createChildDiv() {
     bookDiv.appendChild(childDiv);
     return childDiv;
 }
+
 
 function displayBooks() {
     for (let i = 0; i < library.length; i++) {
